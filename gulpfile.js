@@ -35,7 +35,7 @@ gulp.task('asset-watcher',['copy-assets'],function(done){
 
 gulp.task('serve',['build','copy-assets'],function(){
 
-    var tswatcher = gulp.watch(path.resolve('./src/**/*.ts'), ['ts-watcher']);
+    var tswatcher = gulp.watch('src/**/*.ts', ['ts-watcher']);
     tswatcher.on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
@@ -47,7 +47,7 @@ gulp.task('serve',['build','copy-assets'],function(){
                                 'html',
                                 'jpeg',
                                 'png'
-                            ].map(ext=>path.resolve('./src/**/*.'+ext))
+                            ].map(ext=>'src/**/*.'+ext)
                             , ['asset-watcher']
                         );
     assetwatcher.on('change', function(event) {
